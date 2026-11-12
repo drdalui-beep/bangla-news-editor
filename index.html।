@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বাংলা নিউজ ভিডিও এডিটর</title>
+<style>
+body {
+  margin: 0;
+  padding: 18px;
+  background: #111827;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+h1 {color: #ff3333;text-align:center}
+.panel {
+  background: #263244;
+  padding: 15px;
+  border-radius: 12px;
+  margin: 15px 0;
+}
+button {
+  background: #e52525;
+  color: white;
+  border: 0;
+  padding: 12px;
+  border-radius: 7px;
+  margin: 5px;
+}
+input, textarea {
+  width: 95%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+}
+video {width:100%;margin-top:10px}
+</style>
+</head>
+<body>
+<h1>বাংলা নিউজ</h1>
+<p style="text-align:center">ভিডিও এডিটিং স্টুডিও</p>
+
+<div class="panel">
+<h3>১. ভিডিও আপলোড</h3>
+<input type="file" id="videoFile" accept="video/*">
+<video id="preview" controls></video>
+</div>
+
+<div class="panel">
+<h3>২. নিউজের শিরোনাম</h3>
+<input id="headline" placeholder="এখানে শিরোনাম লিখুন">
+<button onclick="showTitle()">শিরোনাম দেখুন</button>
+<h2 id="result"></h2>
+</div>
+
+<div class="panel">
+<h3>৩. নিউজের স্ক্রিপ্ট</h3>
+<textarea rows="6" placeholder="এখানে বাংলা নিউজ স্ক্রিপ্ট লিখুন"></textarea>
+</div>
+
+<script>
+document.getElementById("videoFile").onchange = function(e) {
+ const file = e.target.files[0];
+ if(file) {
+  document.getElementById("preview").src =
+  URL.createObjectURL(file);
+ }
+};
+function showTitle() {
+ document.getElementById("result").innerText =
+ document.getElementById("headline").value;
+}
+</script>
+</body>
+</html>
